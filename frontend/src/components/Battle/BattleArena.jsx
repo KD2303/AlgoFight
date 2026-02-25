@@ -1,0 +1,106 @@
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import ResultPopup from "./ResultPopup.jsx";
+import { useAuth } from "../../contexts/AuthContext";
+import { fetchUserProfile } from "../../services/api";
+import "./BattleArena.css";
+
+export default function BattleArena() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { user } = useAuth();
+  const [resultBox, setResultBox] = useState(null);
+  const [profile, setProfile] = useState(null);
+
+  // Fetch profile stats from backend
+  useEffect(() => {
+    if (user?.uid) {
+      fetchUserProfile(user.uid)
+        .then((data) => { if (data) setProfile(data); })
+        .catch((err) => console.error("Failed to fetch profile:", err));
+    }
+  }, [user]);
+
+  // Re-fetch stats when returning from a battle (location.state changes)
+  useEffect(() => {
+    if (location.state && location.state.result) {
+      setResultBox(location.state.result);
+      window.history.replaceState({}, document.title);
+      // Refresh stats after battle
+      if (user?.uid) {
+        fetchUserProfile(user.uid)
+          .then((data) => { if (data) setProfile(data); })
+          .catch(() => {});
+      }
+    }
+  }, [location.state]);
+
+  const rating = profile?.rating ?? 1200;
+  const matchesPlayed = profile?.matchesPlayed ?? 0;
+  const matchesWon = profile?.matchesWon ?? 0;
+  const winRate = matchesPlayed > 0 ? Math.round((matchesWon / matchesPlayed) * 100) : 0;
+
+  const startMatchmaking = () => {
+    navigate("/battle/live");
+  };
+
+  return (
+    <div className="arena-root">
+      <div className="arena-inner">
+        <motion.h1
+          initial={{ y: -14, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="arena-title"
+        >
+          ⚔️ Battle Arena
+        </motion.h1>
+
+        <section className="arena-stats">
+          <div className="stat-card green">
+            <div className="stat-icon">🏆</div>
+            <div className="stat-number">{rating}</div>
+            <div className="stat-label">Rating</div>
+          </div>
+          <div className="stat-card red">
+            <div className="stat-icon">🎯</div>
+            <div className="stat-number">{matchesWon}</div>
+            <div className="stat-label">Battles Won</div>
+          </div>
+          <div className="stat-card blue">
+            <div className="stat-icon">⚡</div>
+            <div className="stat-number">{winRate}%</div>
+            <div className="stat-label">Win Rate</div>
+          </div>
+        </section>
+
+        <section className="opponents-section">
+          <h2 className="section-title">Ready to Code?</h2>
+          <p style={{ color: "#aaa", marginBottom: "1.5rem", textAlign: "center" }}>
+            Click below to find a real opponent and battle in a live coding challenge.
+          </p>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <motion.button
+              className="challenge-btn"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={startMatchmaking}
+              style={{ padding: "1rem 3rem", fontSize: "1.2rem" }}
+            >
+              🔍 Find Match
+            </motion.button>
+          </div>
+        </section>
+      </div>
+
+      <AnimatePresence>
+        {resultBox && (
+          <ResultPopup
+            result={resultBox}
+            onClose={() => setResultBox(null)}
+          />
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}

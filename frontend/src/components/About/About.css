@@ -1,0 +1,597 @@
+﻿/* ===== HUD ABOUT PAGE STYLES ===== */
+
+.about-page-container {
+  font-family: var(--font-primary);
+  color: var(--text-secondary);
+  background-color: transparent;
+  min-height: calc(100vh - 70px);
+  padding: var(--spacing-xl) var(--spacing-md);
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.highlight {
+  color: var(--hud-cyan);
+  text-shadow: var(--glow-text);
+}
+
+.highlight-purple {
+  color: var(--hud-purple);
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+}
+
+section {
+  max-width: var(--container-max);
+  margin: 0 auto var(--spacing-2xl) auto;
+  text-align: center;
+}
+
+/* About Section */
+.about-section {
+  padding-top: var(--spacing-lg);
+}
+
+.about-title {
+  font-family: var(--font-display);
+  font-size: var(--font-3xl);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.about-description {
+  font-size: var(--font-base);
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Team Section */
+.team-section {
+  padding-top: var(--spacing-lg);
+  padding-bottom: var(--spacing-2xl);
+}
+
+.team-title {
+  font-family: var(--font-display);
+  font-size: var(--font-2xl);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.team-description {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xl);
+}
+
+.team-members-grid {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+/* Team Member Card - HUD Style */
+.team-member-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  padding: var(--card-padding);
+  width: 380px;
+  transition: all var(--transition-normal);
+  text-align: left;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(10px);
+}
+
+/* HUD corner brackets */
+.team-member-card::before,
+.team-member-card::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: var(--border-default);
+  border-style: solid;
+  transition: all var(--transition-normal);
+}
+
+.team-member-card::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.team-member-card::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+.team-member-card:hover {
+  border-color: var(--border-bright);
+  box-shadow: var(--glow-cyan);
+}
+
+.team-member-card:hover::before,
+.team-member-card:hover::after {
+  border-color: var(--hud-cyan);
+  width: 32px;
+  height: 32px;
+}
+
+.member-avatar-placeholder {
+  width: 100px;
+  height: 100px;
+  background: var(--bg-panel);
+  margin: 0 auto var(--spacing-md) auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--hud-cyan);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.circular-light-effect {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.4) 0%, rgba(0, 240, 255, 0) 70%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(15px);
+  opacity: 0.8;
+  transition: opacity var(--transition-normal);
+}
+
+.member-avatar-placeholder:hover .circular-light-effect {
+  opacity: 1;
+  filter: blur(20px);
+}
+
+.member-name {
+  font-family: var(--font-display);
+  font-size: var(--font-lg);
+  font-weight: var(--font-medium);
+  margin-bottom: 6px;
+  text-align: center;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.member-role {
+  font-family: var(--font-display);
+  font-size: var(--font-sm);
+  color: var(--hud-cyan);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.member-bio {
+  font-size: var(--font-sm);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  flex-grow: 1;
+}
+
+.member-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: var(--spacing-md);
+  justify-content: center;
+  border-top: 1px solid var(--border-dim);
+  padding-top: var(--spacing-md);
+}
+
+.skill-tag {
+  background: transparent;
+  border: 1px solid var(--hud-cyan);
+  color: var(--hud-cyan);
+  padding: 4px 12px;
+  font-size: var(--font-xs);
+  font-weight: var(--font-medium);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  transition: all var(--transition-normal);
+}
+
+.skill-tag:hover {
+  background: rgba(0, 240, 255, 0.1);
+}
+
+/* Social Links - HUD Style */
+.member-socials {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-top: auto;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-dim);
+}
+
+.social-link {
+  color: var(--text-secondary);
+  transition: all var(--transition-normal);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-default);
+  position: relative;
+  text-decoration: none;
+}
+
+.social-link i {
+  font-size: var(--font-md);
+}
+
+.social-link:hover {
+  color: var(--hud-cyan);
+  border-color: var(--hud-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+/* Mission Section - HUD Style */
+.mission-section {
+  background: var(--bg-card);
+  padding: var(--spacing-2xl);
+  border: 1px solid var(--border-dim);
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+/* HUD corner brackets for mission section */
+.mission-section::before,
+.mission-section::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-color: var(--hud-cyan);
+  border-style: solid;
+}
+
+.mission-section::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.mission-section::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+.mission-title {
+  font-family: var(--font-display);
+  font-size: var(--font-2xl);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.mission-description {
+  font-size: var(--font-base);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 850px;
+  margin: 0 auto var(--spacing-xl) auto;
+}
+
+/* Feature Cards - HUD Style */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  padding: var(--card-padding);
+  border: 1px solid var(--border-dim);
+  text-align: center;
+  transition: all var(--transition-normal);
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+/* HUD corner brackets for feature cards */
+.feature-card::before,
+.feature-card::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--border-default);
+  border-style: solid;
+  transition: all var(--transition-normal);
+}
+
+.feature-card::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.feature-card::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+.feature-card:hover {
+  border-color: var(--border-bright);
+  box-shadow: var(--glow-cyan);
+}
+
+.feature-card:hover::before,
+.feature-card:hover::after {
+  border-color: var(--hud-cyan);
+  width: 24px;
+  height: 24px;
+}
+
+.feature-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--bg-panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-md) auto;
+  font-size: var(--font-xl);
+  color: var(--hud-cyan);
+  border: 1px solid var(--hud-cyan);
+  transition: all var(--transition-normal);
+}
+
+.feature-card:hover .feature-icon {
+  background: rgba(0, 240, 255, 0.1);
+  box-shadow: var(--glow-cyan);
+}
+
+.feature-heading {
+  font-family: var(--font-display);
+  font-size: var(--font-lg);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.feature-text {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Arena Stats Section - HUD Style */
+.arena-stats-section {
+  padding: var(--spacing-2xl) var(--spacing-md);
+  background: var(--bg-card);
+  border: 1px solid var(--hud-cyan);
+  position: relative;
+}
+
+/* HUD corner brackets for arena stats */
+.arena-stats-section::before,
+.arena-stats-section::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-color: var(--hud-cyan);
+  border-style: solid;
+}
+
+.arena-stats-section::before {
+  top: -1px;
+  left: -1px;
+  border-width: 3px 0 0 3px;
+}
+
+.arena-stats-section::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 3px 3px 0;
+}
+
+.arena-stats-title {
+  font-family: var(--font-display);
+  font-size: var(--font-2xl);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--spacing-xl);
+  color: var(--hud-cyan);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  text-shadow: var(--glow-text);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--spacing-lg);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.stat-item {
+  text-align: center;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-dim);
+  position: relative;
+  background: var(--bg-panel);
+}
+
+/* HUD corner brackets for stat items */
+.stat-item::before,
+.stat-item::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--hud-cyan);
+  border-style: solid;
+}
+
+.stat-item::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.stat-item::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: var(--font-3xl);
+  font-weight: var(--font-medium);
+  color: var(--hud-cyan);
+  text-shadow: var(--glow-text);
+}
+
+.stat-label {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  margin-top: var(--spacing-xs);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .team-members-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-member-card {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .stats-grid {
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-title,
+  .team-title,
+  .mission-title,
+  .arena-stats-title {
+    font-size: var(--font-xl);
+  }
+
+  .about-description,
+  .mission-description {
+    font-size: var(--font-sm);
+  }
+
+  .team-member-card {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-number {
+    font-size: var(--font-2xl);
+  }
+
+  .feature-card {
+    padding: var(--spacing-md);
+  }
+
+  .feature-heading {
+    font-size: var(--font-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .about-page-container {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+
+  .about-title {
+    font-size: var(--font-xl);
+  }
+
+  .team-title,
+  .mission-title,
+  .arena-stats-title {
+    font-size: var(--font-lg);
+  }
+
+  .team-member-card {
+    padding: var(--spacing-md);
+  }
+
+  .member-name {
+    font-size: var(--font-lg);
+  }
+
+  .member-role {
+    font-size: var(--font-sm);
+  }
+
+  .member-socials {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  .mission-section {
+    padding: var(--spacing-lg);
+  }
+
+  .arena-stats-section {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+
+  .stat-number {
+    font-size: var(--font-xl);
+  }
+
+  .stat-label {
+    font-size: var(--font-xs);
+  }
+
+  .stats-grid,
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,372 @@
+/* ===== HUD HOME PAGE STYLES ===== */
+
+.home-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--spacing-xl) var(--spacing-md);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== HERO SECTION ===== */
+.hero-section {
+  position: relative;
+  width: 100%;
+  padding: var(--spacing-2xl) var(--spacing-md);
+  margin-bottom: var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* HUD decorative frame around hero */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-default) 20%, var(--hud-cyan) 50%, var(--border-default) 80%, transparent);
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-dim), transparent);
+}
+
+.main-title {
+  margin-bottom: var(--spacing-md);
+  position: relative;
+}
+
+.algo-fight-text {
+  font-family: var(--font-display);
+  font-size: clamp(var(--font-3xl), 10vw, 5rem);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-widest);
+  display: inline-block;
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.3),
+    0 0 30px rgba(0, 240, 255, 0.1);
+}
+
+.fight-part {
+  color: var(--hud-cyan);
+  text-shadow: var(--glow-text);
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: var(--font-lg);
+  margin-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-secondary);
+  font-weight: var(--font-normal);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+/* Enter Arena Button - HUD outline style */
+.enter-arena-btn {
+  position: relative;
+  background: transparent;
+  color: var(--hud-cyan);
+  border: 1px solid var(--border-default);
+  padding: 16px 48px;
+  font-family: var(--font-display);
+  font-size: var(--font-md);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  overflow: hidden;
+}
+
+.enter-arena-btn::before,
+.enter-arena-btn::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--hud-cyan);
+  border-style: solid;
+  transition: all var(--transition-normal);
+}
+
+.enter-arena-btn::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.enter-arena-btn::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+.enter-arena-btn:hover {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: var(--hud-cyan);
+  box-shadow: var(--glow-cyan-intense);
+  text-shadow: var(--glow-text);
+}
+
+.enter-arena-btn:hover::before,
+.enter-arena-btn:hover::after {
+  width: 20px;
+  height: 20px;
+}
+
+/* ===== FEATURES SECTION ===== */
+.features-section {
+  margin-bottom: var(--spacing-2xl);
+  position: relative;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: var(--font-xl);
+  margin-bottom: var(--spacing-xl);
+  color: var(--hud-cyan);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  text-shadow: var(--glow-text);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-md);
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+/* Feature Cards - HUD style */
+.feature-item {
+  position: relative;
+  background: var(--bg-card);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border-dim);
+  text-align: center;
+  transition: all var(--transition-normal);
+  backdrop-filter: blur(10px);
+}
+
+/* HUD corner brackets */
+.feature-item::before,
+.feature-item::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--border-default);
+  border-style: solid;
+  transition: all var(--transition-normal);
+}
+
+.feature-item::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.feature-item::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+.feature-item:hover {
+  border-color: var(--border-bright);
+  background: var(--bg-card-hover);
+  box-shadow: var(--glow-cyan);
+}
+
+.feature-item:hover::before,
+.feature-item:hover::after {
+  border-color: var(--hud-cyan);
+  width: 24px;
+  height: 24px;
+}
+
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: var(--spacing-sm);
+  color: var(--hud-cyan);
+  filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.3));
+}
+
+.feature-item h3 {
+  font-family: var(--font-display);
+  font-size: var(--font-base);
+  margin-top: 0;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-primary);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.feature-item p {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+  position: relative;
+  background: var(--bg-card);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  border: 1px solid var(--border-dim);
+  max-width: var(--container-narrow);
+  margin: var(--spacing-2xl) auto 0 auto;
+  backdrop-filter: blur(10px);
+}
+
+/* HUD corner brackets for CTA */
+.cta-section::before,
+.cta-section::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-color: var(--hud-cyan);
+  border-style: solid;
+}
+
+.cta-section::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.cta-section::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+.cta-heading {
+  font-family: var(--font-display);
+  font-size: var(--font-xl);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.cta-description {
+  font-size: var(--font-base);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.7;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* CTA Buttons - HUD outline style */
+.cta-buttons .get-started-btn,
+.cta-buttons .learn-more-btn {
+  position: relative;
+  background: transparent;
+  border: 1px solid var(--border-default);
+  padding: 12px 28px;
+  font-family: var(--font-display);
+  font-size: var(--font-sm);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.cta-buttons .get-started-btn {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: var(--hud-cyan);
+  color: var(--hud-cyan);
+}
+
+.cta-buttons .learn-more-btn {
+  color: var(--text-secondary);
+}
+
+.cta-buttons .get-started-btn:hover,
+.cta-buttons .learn-more-btn:hover {
+  background: rgba(0, 240, 255, 0.15);
+  border-color: var(--hud-cyan);
+  color: var(--hud-cyan);
+  box-shadow: var(--glow-cyan);
+  text-shadow: var(--glow-text);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: var(--spacing-xl) var(--spacing-sm);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .hero-section::before {
+    width: 100%;
+  }
+  
+  .cta-section {
+    padding: var(--spacing-lg) var(--spacing-md);
+    margin: var(--spacing-xl) auto 0 auto;
+  }
+
+  .enter-arena-btn {
+    padding: 14px 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+  
+  .enter-arena-btn {
+    padding: 12px 28px;
+    font-size: var(--font-sm);
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-buttons .get-started-btn,
+  .cta-buttons .learn-more-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}

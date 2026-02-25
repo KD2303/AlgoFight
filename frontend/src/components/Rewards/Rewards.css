@@ -1,0 +1,472 @@
+/* ===== HUD REWARDS PAGE STYLES ===== */
+
+.container {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--spacing-xl) var(--spacing-md);
+  font-family: var(--font-primary);
+}
+
+main {
+  display: flex;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-md);
+}
+
+.main-content {
+  flex: 3;
+}
+
+.sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.header-left h1 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  font-size: var(--font-xl);
+  margin-bottom: var(--spacing-xs);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.header-left p {
+  color: var(--text-secondary);
+  font-size: var(--font-sm);
+}
+
+/* Rewards Grid */
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xs);
+}
+
+/* Reward Card - HUD Style */
+.reward-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--card-padding);
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  transition: all var(--transition-normal);
+  height: 100%;
+  min-height: 280px;
+  backdrop-filter: blur(10px);
+}
+
+/* HUD corner brackets */
+.reward-card::before,
+.reward-card::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--border-default);
+  border-style: solid;
+  transition: all var(--transition-normal);
+}
+
+.reward-card::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.reward-card::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+.reward-card:hover {
+  border-color: var(--border-bright);
+  box-shadow: var(--glow-cyan);
+}
+
+.reward-card:hover::before,
+.reward-card:hover::after {
+  border-color: var(--hud-cyan);
+  width: 20px;
+  height: 20px;
+}
+
+.reward-card .reward-icon {
+  font-size: var(--font-2xl);
+  margin-bottom: var(--spacing-sm);
+  align-self: flex-start;
+  filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.3));
+}
+
+.reward-card h3 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  font-size: var(--font-sm);
+  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-medium);
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.reward-card p {
+  color: var(--text-secondary);
+  font-size: var(--font-sm);
+  margin-bottom: var(--spacing-sm);
+  flex-grow: 1;
+  line-height: 1.5;
+}
+
+.reward-card .cost {
+  font-family: var(--font-mono);
+  font-weight: var(--font-semibold);
+  color: var(--hud-cyan);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-sm);
+}
+
+/* Buttons - HUD outline style */
+.redeem-btn,
+.more-info-btn,
+.coming-soon-btn {
+  padding: 12px var(--spacing-sm);
+  font-family: var(--font-display);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  font-size: var(--font-xs);
+  transition: all var(--transition-normal);
+  border: 1px solid;
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  background: transparent;
+}
+
+.redeem-btn {
+  border-color: var(--hud-green);
+  color: var(--hud-green);
+}
+
+.redeem-btn:hover {
+  background: rgba(0, 255, 136, 0.1);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.more-info-btn {
+  border-color: var(--hud-blue);
+  color: var(--hud-blue);
+}
+
+.more-info-btn:hover {
+  background: rgba(0, 128, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 128, 255, 0.2);
+}
+
+.coming-soon-btn {
+  border-color: var(--border-dim);
+  color: var(--text-dim);
+  cursor: not-allowed;
+}
+
+.reward-card.coming-soon {
+  opacity: 0.5;
+  background: var(--bg-panel);
+}
+
+/* Arena Points Card - HUD Style */
+.your-arena-points {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--card-padding);
+  background: var(--bg-card);
+  border: 1px solid var(--hud-cyan);
+  color: var(--text-primary);
+  overflow: hidden;
+  margin-bottom: var(--spacing-md);
+  backdrop-filter: blur(10px);
+}
+
+/* HUD corner brackets */
+.your-arena-points::before,
+.your-arena-points::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--hud-cyan);
+  border-style: solid;
+}
+
+.your-arena-points::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.your-arena-points::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+.your-arena-points h2 {
+  font-family: var(--font-display);
+  color: var(--hud-cyan);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-xs);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.your-arena-points .points {
+  font-family: var(--font-display);
+  font-size: var(--font-3xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  text-shadow: var(--glow-text);
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.your-arena-points .points span {
+  font-size: 0.4em;
+  font-weight: var(--font-normal);
+  color: var(--text-secondary);
+  margin-left: var(--spacing-xs);
+}
+
+/* Available Rewards */
+.available-rewards h2 {
+  font-family: var(--font-display);
+  margin-bottom: var(--spacing-sm);
+  color: var(--hud-cyan);
+  font-size: var(--font-base);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* Card - HUD Style */
+.card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  padding: var(--card-padding);
+  color: var(--text-secondary);
+  backdrop-filter: blur(10px);
+}
+
+/* HUD corner brackets for cards */
+.card::before,
+.card::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--border-default);
+  border-style: solid;
+}
+
+.card::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.card::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+.card h2 {
+  font-family: var(--font-display);
+  color: var(--hud-cyan);
+  font-size: var(--font-xs);
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* Progress Path */
+.progress-path .master-rank {
+  margin-bottom: var(--spacing-md);
+}
+
+.progress-path .master-rank p {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.progress-path .master-rank span {
+  color: var(--hud-cyan);
+  font-weight: var(--font-semibold);
+}
+
+.progress-bar {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-dim);
+  height: 6px;
+  overflow: hidden;
+  margin-bottom: var(--spacing-sm);
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--hud-cyan);
+  transition: width 0.5s ease-in-out;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+}
+
+.progress-path ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.progress-path li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: var(--font-xs);
+  border-bottom: 1px dashed var(--border-dim);
+  transition: color var(--transition-fast);
+  font-family: var(--font-primary);
+}
+
+.progress-path li:last-child {
+  border-bottom: none;
+}
+
+.progress-path li span {
+  font-family: var(--font-mono);
+  font-weight: var(--font-semibold);
+  color: var(--hud-cyan);
+}
+
+.progress-path li:first-child,
+.progress-path li:nth-child(2),
+.progress-path li:nth-child(3) {
+  color: var(--hud-green);
+}
+
+/* Earn Points & Recent Redeems */
+.earn-points li,
+.recent-redeems li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: var(--font-xs);
+  border-bottom: 1px dashed var(--border-dim);
+}
+
+.earn-points li:last-child,
+.recent-redeems li:last-child {
+  border-bottom: none;
+}
+
+.earn-points li span,
+.recent-redeems li span {
+  font-family: var(--font-mono);
+  color: var(--hud-cyan);
+  font-weight: var(--font-semibold);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  main {
+    flex-direction: column;
+  }
+  
+  .main-content,
+  .sidebar {
+    flex: none;
+    width: 100%;
+  }
+  
+  .rewards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: var(--spacing-md);
+  }
+  
+  .your-arena-points .points {
+    font-size: var(--font-2xl);
+  }
+  
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: var(--spacing-sm);
+  }
+  
+  .your-arena-points {
+    padding: var(--spacing-md);
+  }
+  
+  .your-arena-points .points {
+    font-size: var(--font-xl);
+  }
+  
+  .rewards-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+  
+  .sidebar {
+    gap: var(--spacing-sm);
+  }
+  
+  .card {
+    padding: var(--spacing-sm);
+  }
+}

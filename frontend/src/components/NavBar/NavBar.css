@@ -1,0 +1,263 @@
+/* ===== HUD NAVBAR STYLES ===== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--bg-panel);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-dim);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-md);
+}
+
+/* HUD decorative line at bottom */
+.navbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hud-cyan), transparent);
+  opacity: 0.5;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+/* Logo with HUD styling */
+.navbar-logo .logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.3));
+  transition: all var(--transition-normal);
+}
+
+.navbar-logo .logo-img:hover {
+  filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.5));
+}
+
+/* Login Button - HUD outline style */
+.log-in-button {
+  position: relative;
+  background: transparent;
+  border: 1px solid var(--border-default);
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.log-in-button::before,
+.log-in-button::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-color: var(--hud-cyan);
+  border-style: solid;
+  transition: all var(--transition-normal);
+}
+
+.log-in-button::before {
+  top: -1px;
+  left: -1px;
+  border-width: 1px 0 0 1px;
+}
+
+.log-in-button::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 1px 1px 0;
+}
+
+.log-in-button:hover {
+  background: rgba(0, 240, 255, 0.08);
+  border-color: var(--hud-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+.log-in-button:hover::before,
+.log-in-button:hover::after {
+  width: 10px;
+  height: 10px;
+}
+
+.log-in-button a {
+  color: var(--hud-cyan);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: var(--font-sm);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* Navigation Links */
+.navbar-links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-panel);
+  backdrop-filter: blur(20px);
+  transform: translateY(-100%);
+  transition: transform 0.4s ease-out;
+  z-index: 1;
+  padding: 10px var(--spacing-md);
+}
+
+.navbar-links.open {
+  transform: translateY(0);
+}
+
+.navbar-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.navbar-links li a {
+  position: relative;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 10px 18px;
+  font-family: var(--font-display);
+  font-size: var(--font-xs);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  white-space: nowrap;
+  transition: all var(--transition-normal);
+  border: 1px solid transparent;
+}
+
+.navbar-links li a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: var(--hud-cyan);
+  transition: width var(--transition-normal);
+}
+
+.navbar-links li a:hover,
+.navbar-links li a.active {
+  color: var(--hud-cyan);
+  text-shadow: var(--glow-text);
+}
+
+.navbar-links li a:hover::before,
+.navbar-links li a.active::before {
+  width: 80%;
+}
+
+/* Toggle button - HUD style */
+.navbar-toggle {
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border-dim);
+  background: transparent;
+  transition: all var(--transition-normal);
+}
+
+.navbar-toggle:hover {
+  border-color: var(--hud-cyan);
+  background: rgba(0, 240, 255, 0.05);
+}
+
+.toggle-icon {
+  font-size: var(--font-lg);
+  color: var(--hud-cyan);
+  transition: transform var(--transition-normal);
+}
+
+.navbar-links.open ~ .navbar-toggle .toggle-icon {
+  transform: rotate(90deg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    height: 60px;
+    padding: 0 var(--spacing-sm);
+  }
+
+  .navbar-logo .logo-img {
+    height: 32px;
+  }
+
+  .navbar-links {
+    height: calc(100vh - 60px);
+    top: 60px;
+    align-items: flex-start;
+    padding-top: var(--spacing-lg);
+    transform: translateY(-100vh);
+    background: var(--bg-space);
+  }
+
+  .navbar-links.open {
+    transform: translateY(0);
+  }
+
+  .navbar-links ul {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-sm);
+    width: 100%;
+  }
+
+  .navbar-links li a {
+    display: block;
+    padding: var(--spacing-sm) 0;
+    font-size: var(--font-sm);
+  }
+
+  .log-in-button {
+    padding: 8px 16px;
+  }
+
+  .log-in-button a {
+    font-size: var(--font-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-logo .logo-img {
+    height: 28px;
+  }
+
+  .toggle-icon {
+    font-size: var(--font-base);
+  }
+
+  .navbar-toggle {
+    width: 38px;
+    height: 38px;
+  }
+}

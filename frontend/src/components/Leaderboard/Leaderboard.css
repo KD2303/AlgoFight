@@ -1,0 +1,111 @@
+/* ===== HUD LEADERBOARD PAGE STYLES ===== */
+
+.leaderboard-root {
+  min-height: calc(100vh - 70px);
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  text-align: center;
+  font-family: var(--font-primary);
+  padding: var(--spacing-xl) var(--spacing-md);
+  position: relative;
+}
+
+.coming-title {
+  font-family: var(--font-display);
+  font-size: var(--font-2xl);
+  margin-bottom: var(--spacing-lg);
+  color: var(--hud-cyan);
+  text-shadow: var(--glow-text);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.coming-box {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  padding: var(--card-padding) var(--spacing-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+/* HUD corner brackets */
+.coming-box::before,
+.coming-box::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: var(--hud-cyan);
+  border-style: solid;
+  animation: cornerPulse 3s ease-in-out infinite;
+}
+
+.coming-box::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.coming-box::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+  animation-delay: 1.5s;
+}
+
+@keyframes cornerPulse {
+  0%, 100% {
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+  }
+  50% {
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+  }
+}
+
+.neon-text {
+  font-family: var(--font-display);
+  font-size: var(--font-xl);
+  color: var(--hud-cyan);
+  text-shadow: var(--glow-text);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-widest);
+  animation: textPulse 2s infinite alternate;
+}
+
+@keyframes textPulse {
+  from {
+    text-shadow: var(--glow-text);
+    color: var(--hud-cyan);
+  }
+  to {
+    text-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+    color: var(--hud-purple);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .coming-title {
+    font-size: var(--font-xl);
+  }
+  
+  .neon-text {
+    font-size: var(--font-lg);
+  }
+  
+  .coming-box {
+    padding: var(--spacing-md);
+  }
+}
