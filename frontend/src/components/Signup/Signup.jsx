@@ -45,7 +45,7 @@ function Signup() {
     }
     if (!isValid) return;
 
-    console.log(userName, userPass, confirmPass);
+
     setUserName("");
     setUserPass("");
     setConfirmPass("");

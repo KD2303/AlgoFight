@@ -43,7 +43,7 @@ function Login(){
             return;
         }
 
-        console.log(userName, userPass);
+
         setUserName("");
         setUserPass("");
         notify({
